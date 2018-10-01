@@ -1,0 +1,41 @@
+@model LogRegViewModel
+
+<div class = "containerLogin">
+    <h1>Register</h1>
+    <p style="margin:0px;"><span class = "Error">@TempData["Error"]</span></p>
+    <p style="margin:0px;"><span class = "Error" asp-validation-for="user.first_name"></span></p>
+    <p style="margin:0px;"><span class = "Error" asp-validation-for="user.last_name"></span></p>
+    <p style="margin:0px;"><span class = "Error" asp-validation-for="user.email"></span></p>
+    <p style="margin:0px;"><span class = "Error" asp-validation-for="user.password"></span></p>
+    <p style="margin:0px;"><span class = "Error" asp-validation-for="user.confirm_pw"></span></p>
+
+    <form asp-action="CreateUserAction" asp-controller="User" method="POST">
+        <input asp-for="user.first_name" placeholder="First Name">
+
+        <input asp-for="user.last_name" placeholder="Last Name">
+
+        <input asp-for="user.email" placeholder="Email Address">
+
+        <input asp-for="user.password" type="password" placeholder="Password">
+
+        <input asp-for="user.confirm_pw" type="password" placeholder="Confirm Password">
+
+        <input type="submit" value="Register">
+    </form>
+
+    <h1>Login</h1>
+    <p style="margin:0px;"><span class = "Error">@TempData["ErrorLogin"]</span></p>
+    <p style="margin:0px;"><span class = "Error" asp-validation-for="loginUser.email"></span></p>
+    <p style="margin:0px;"><span class = "Error" asp-validation-for="loginUser.password"></span></p>
+
+    <form asp-action="LoginAction" asp-controller="User" method="POST">
+        <input asp-for="loginUser.email" placeholder="Email Address">
+
+        <input asp-for="loginUser.password" type="password" placeholder="Password">
+
+        <input type="submit" value = "Login">
+    </form>
+
+
+    <p><a href="/">Home</a></p>
+</div>

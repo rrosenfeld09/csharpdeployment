@@ -1,0 +1,21 @@
+@model loadList
+
+<div class = "containerLoad">
+    <h1>Join an existing load or start your own</h1>
+
+    @{
+        foreach(var load in @Model.loads)
+        {
+            int num_seats_left = 14 - @load.current_manifested;
+            <form action="/load/homepage/@load.load_id">
+                <input id="airplaneButton" type="submit" value="Load @load.load_id (@num_seats_left spots left)">
+            </form>            
+        }
+    }
+    <div>
+        <form action="/CreateLoad">
+            <input id="minibutton" type="submit" value = "Start New Load!">
+        </form>
+        <p><a href="/logout">Logout</a></p> 
+    </div>
+</div>
